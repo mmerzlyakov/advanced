@@ -1,0 +1,45 @@
+#
+# Структура таблицы `cat`
+#
+
+CREATE TABLE `cat` (
+  `id` int(11) NOT NULL auto_increment,
+  `img` varchar(255) NOT NULL default '',
+  `catalog` varchar(255) NOT NULL default '',
+  `description` text NOT NULL,
+  UNIQUE KEY `id` (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+#
+# Структура таблицы `categ`
+#
+
+CREATE TABLE `categ` (
+  `categ_id` int(11) NOT NULL auto_increment,
+  `category` varchar(255) NOT NULL default '',
+  `id` int(11) NOT NULL default '0',
+  UNIQUE KEY `categ_id` (`categ_id`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+#
+# Структура таблицы `subcat`
+#
+
+CREATE TABLE `subcat` (
+  `sub_id` int(11) NOT NULL auto_increment,
+  `subcategory` text NOT NULL,
+  `categ_id` int(11) NOT NULL default '0',
+  UNIQUE KEY `sub_id` (`sub_id`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+#
+# Структура таблицы `name_cat`
+#
+
+CREATE TABLE `name_cat` (
+  `name_id` int(11) NOT NULL auto_increment,
+  `name` text NOT NULL,
+  `price` double NOT NULL default '0',
+  `sub_id` int(11) NOT NULL default '0',
+  UNIQUE KEY `name_id` (`name_id`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;

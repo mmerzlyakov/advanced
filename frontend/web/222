@@ -1,0 +1,19 @@
+function showAddress (value) {
+map.removeOverlay(geoResult);
+var geocoder = new YMaps.Geocoder(value, {results: 1, boundedBy: map.getBounds()});
+
+	YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
+		if (this.length()) {
+	geoResult = this.get(0);
+	map.addOverlay(geoResult);
+	map.setBounds(geoResult.getBounds());
+	}
+	else {
+		alert("Ничего не найдено");
+	}
+});
+
+YMaps.Events.observe(geocoder, geocoder.Events.Fault,
+function (error) {alert("Произошла ошибка: " + error.message)});
+
+}
